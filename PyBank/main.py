@@ -1,4 +1,5 @@
-# Your task is to create a Python script that analyzes the records to calculate each of the following:
+# Your task is to create a Python script that analyzes the records to 
+# calculate each of the following:
 # The total number of months included in the dataset
 # The net total amount of "Profit/Losses" over the entire period
 # The average of the changes in "Profit/Losses" over the entire period
@@ -15,16 +16,15 @@ csvpath = os.path.join('.','PyBank', 'budget_data.csv')
 with open(csvpath) as csvfile:
     csvreader = csv.reader(csvfile)
 
-    # first row contains header
+    # First row contains header
     csv_header = next(csvreader)
-    print(csv_header)
 
-    # count total number of months in the data
+    # Count total number of months in the data
     total_months = 0
-    # total net profit/loss
+    # Total net profit/loss
     total_net = 0
 
-    # changes
+    # Changes from month to month
     total_change = 0
     changes = {}
     previous = 0
@@ -32,18 +32,18 @@ with open(csvpath) as csvfile:
     for row in csvreader:
         total_months = total_months + 1
         total_net = total_net + int(row[1])
-        # compute change from previous month
+        # Compute change from previous month
         if(total_months > 1):
             changes[row[0]]= int(row[1])-previous
         previous = int(row[1])
 
-# compute average change
+# Compute average change
 for i in changes:
     print(int(changes[i]))
     total_change = total_change + int(changes[i])
 average_change = total_change / len(changes)
 
-# compute max and min change
+# Compute max and min change
 max_i = max(changes, key=changes.get)
 min_i = min(changes, key=changes.get)
 max_val = changes[max_i]
@@ -57,14 +57,6 @@ print(f"Total: ${total_net}")
 print(f"Average Change: ${format(average_change,'.2f')}")
 print(f"Greatest Increase in Profits: {max_i} $({max_val})")
 print(f"Greatest Decrease in Profits: {min_i} $({min_val})")
-
-# Financial Analysis
-#  ----------------------------
-# Total Months: 86
-# Total: $38382578
-# Average  Change: $-2315.12
-# Greatest Increase in Profits: Feb-2012 ($1926159)
-# Greatest Decrease in Profits: Sep-2013 ($-2196167)
 
 # Export results to a text file
 output_path = os.path.join(".",'PyBank',"output.txt")
