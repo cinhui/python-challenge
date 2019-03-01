@@ -41,7 +41,7 @@ print(" -------------------------")
 print(f" Total Votes: {total_votes}")
 print(" -------------------------")
 for person in candidates:
-    print(f"{person}: {candidates[person]/total_votes} ({candidates[person]})")
+    print(f"{person}: {format(100*candidates[person]/total_votes,'0.2f')}% ({candidates[person]})")
 print(" -------------------------")
 print(f" Winner: {max(candidates, key=candidates.get)}")
 print(" -------------------------")
@@ -59,3 +59,14 @@ print(" -------------------------")
 # -------------------------
 
 # Export a text file with the results
+output_path = os.path.join(".",'PyPoll',"output.txt")
+with open(output_path,'w',newline='') as txtfile:
+    txtfile.write("Election Results\n")
+    txtfile.write(" -------------------------\n")
+    txtfile.write(f" Total Votes: {total_votes}\n")
+    txtfile.write(" -------------------------\n")
+    for person in candidates:
+        txtfile.write(f"{person}: {format(100*candidates[person]/total_votes,'0.2f')}% ({candidates[person]})\n")
+    txtfile.write(" -------------------------\n")
+    txtfile.write(f" Winner: {max(candidates, key=candidates.get)}\n")
+    txtfile.write(" -------------------------\n")

@@ -54,7 +54,7 @@ print("Financial Analysis")
 print(" ----------------------------")
 print(f"Total Months: {total_months}")
 print(f"Total: ${total_net}")
-print(f"Average Change: ${average_change}")
+print(f"Average Change: ${format(average_change,'.2f')}")
 print(f"Greatest Increase in Profits: {max_i} $({max_val})")
 print(f"Greatest Decrease in Profits: {min_i} $({min_val})")
 
@@ -67,3 +67,13 @@ print(f"Greatest Decrease in Profits: {min_i} $({min_val})")
 # Greatest Decrease in Profits: Sep-2013 ($-2196167)
 
 # Export results to a text file
+output_path = os.path.join(".",'PyBank',"output.txt")
+with open(output_path,'w',newline='') as txtfile:
+    txtfile.write("Financial Analysis\n")
+    txtfile.write(" ----------------------------\n")
+    txtfile.write(f"Total Months: {total_months}\n")
+    txtfile.write(f"Total: ${total_net}\n")
+    txtfile.write(f"Average Change: ${format(average_change,'0.2f')}\n")
+    txtfile.write(f"Greatest Increase in Profits: {max_i} $({max_val})\n")
+    txtfile.write(f"Greatest Decrease in Profits: {min_i} $({min_val})\n")
+    
