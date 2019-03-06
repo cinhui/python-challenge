@@ -11,7 +11,7 @@
 import os
 import csv
 
-csvpath = os.path.join('.','PyPoll', 'election_data.csv')
+csvpath = os.path.join('./election_data.csv')
 
 # Dictionary of candidate and number of votes
 candidates = {}
@@ -48,7 +48,7 @@ print(f" Winner: {max(candidates, key=candidates.get)}")
 print(" -------------------------")
 
 # Export a text file with the results
-output_path = os.path.join(".",'PyPoll',"output.txt")
+output_path = os.path.join("./output.txt")
 with open(output_path,'w',newline='') as txtfile:
     txtfile.write("Election Results\n")
     txtfile.write(" -------------------------\n")

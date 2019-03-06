@@ -11,7 +11,7 @@
 import os
 import csv
 
-csvpath = os.path.join('.','PyBank', 'budget_data.csv')
+csvpath = os.path.join('./budget_data.csv')
 
 with open(csvpath) as csvfile:
     csvreader = csv.reader(csvfile)
@@ -39,7 +39,7 @@ with open(csvpath) as csvfile:
 
 # Compute average change
 for i in changes:
-    print(int(changes[i]))
+    #print(int(changes[i]))
     total_change = total_change + int(changes[i])
 average_change = total_change / len(changes)
 
@@ -59,7 +59,7 @@ print(f"Greatest Increase in Profits: {max_i} $({max_val})")
 print(f"Greatest Decrease in Profits: {min_i} $({min_val})")
 
 # Export results to a text file
-output_path = os.path.join(".",'PyBank',"output.txt")
+output_path = os.path.join("./output.txt")
 with open(output_path,'w',newline='') as txtfile:
     txtfile.write("Financial Analysis\n")
     txtfile.write(" ----------------------------\n")
